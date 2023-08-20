@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.background{
+    background-image: url("../Component/LoginImage.png");
+    margin-top: -30rem;
+    
+
+}
+
+
+/* .Broiler {
+    background-image: url("../Asset/Suasage.png");
+    width: 50vw;
+    height: fit-content;
+
+}
+
+.CowLiver {
+    background-image: url("../Asset/Broiler.png");
+    width: 50vw;
+    height:fit-content;
+
+} */
