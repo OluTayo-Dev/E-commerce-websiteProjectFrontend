@@ -3,24 +3,23 @@ import { useState} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export default function Admin() {
-    const [input, setInput] = useState({
+export default function AdminLogin() {
+    const [inputs, setInputs] = useState({
         email: "",
-        password:""
+        password:"",
       });
      const navigate = useNavigate();
-
       const handleOnChange = (e) => {
-        setInput({...input, [e.target.id]: e.target.value})
+        setInputs({...inputs, [e.target.id]: e.target.value})
      }
      const onSubmit = async (e) => {
       e.preventDefault();
       try{
-        await axios.post("http://localhost:8002/api/admin/createAdmin", input)
+        await axios.post("http://localhost:8002/api/admin/authAdmin", inputs)
         .then((res) =>{
           console.log(res.data)
-          setInput(res.data)
-          navigate("/adminLogin")
+          setInputs(res.data)
+          navigate("/")
           alert("Admin account created successfully")
         })
       } catch (err) {
@@ -35,14 +34,14 @@ export default function Admin() {
 
            <input type="email"
              placeholder="Enter Email"
-             value={input.email}
+             value={inputs.email}
              id="email"
              onChange={handleOnChange}
              className="border-b-2 ml-10 w-[12rem] h-[2rem] md:w-[15rem] md:h-[3rem] py-2 focus:outline-none" />
 
             <input type="password"
              placeholder="Enter Password"
-             value={input.password}
+             value={inputs.password}
              id="password"
              onChange={handleOnChange}
              className="border-b-2 ml-10 w-[12rem] h-[2rem] md:w-[15rem] md:h-[3rem] py-2 focus:outline-none" />

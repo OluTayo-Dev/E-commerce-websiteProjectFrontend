@@ -8,8 +8,29 @@ import { FaInstagram } from "react-icons/fa";
 import { BsTwitter} from "react-icons/bs";
 import {TfiShoppingCart} from "react-icons/tfi";
 
+
 export default function Product() {
 const [products, getProducts] = useState([]);
+const [filteredProducts, setFilteredProducts] = useState([]);
+
+
+const handleSearch = (e) =>{
+  const keyword = e.target.value;
+
+  if(keyword !== ""){
+    const results = filteredProducts?.filter((data) =>{
+     return (
+      data.name?.toLowerCase().includes(keyword.toLowerCase()) ||
+      data.description?.toLowerCase().includes(keyword.toLowerCase())
+
+     )
+
+    });
+    getProducts(results)
+  } else {
+    getProducts(filteredProducts);
+  }
+}
 
 useEffect(() => {
   axios.get("http://localhost:8002/api/admin/getProducts")
@@ -22,7 +43,7 @@ console.log(products)
   return (
     <div>
      <section>
-       <nav className="absolute mx-auto w-[100%] top-[0] bg-zinc-100 z-50 p-6">
+       <nav className="fixed mx-auto w-[100%] top-[0] bg-zinc-100 z-50 p-6">
         <div className="flex items-center justify-between">
           <div className="pt-2">
             <p className="font-bold text-2xl text-brightRed">FARM<bold className="text-darkGrayishBlue">CONNECT</bold></p>
@@ -30,7 +51,9 @@ console.log(products)
           <div className=" flex flex-1 justify-center">
             <form>
               <div className="flex">
-                <input type="text" placeholder="Search Products" className="flex-1 bg-zinc-100 px-4 border-b-2 border-black  w-[25rem] focus:outline-0 text-md" />
+                <input type="text" placeholder="Search Products" 
+                onChange={(event)=> handleSearch(event)}
+                className="flex-1 bg-zinc-100 px-4 border-b-2 border-black  w-[25rem] focus:outline-0 text-md" />
                 <CiSearch className="-ml-[25rem] mt-1 text-black" />
               </div>
             </form>
@@ -46,13 +69,14 @@ console.log(products)
         </div>
         </nav>
        </section>
-       <div>
+       <div className="flex flex-col mx-auto space-y-0 md:space-y-0 text-center md:text-center">
        <p className="max-w-xl text-xl font-medium text-center md:text-center text-black">View the list of our Products Below</p>
        </div>
+
+
       <section>
-     
        <div className="flex flex-col space-y-8">
-         <div className="grid grid-cols-4 gap-1 mt-[8rem]">
+         <div className="grid grid-cols-4 gap-1 mt-[5rem] h-full min-h-[50vh]">
             {products.map((product) => {
               return (
                <div key={product} className="">
@@ -76,7 +100,8 @@ console.log(products)
                     <p className="font-bold">Category:</p>
                   <p>{product.category}</p>
                   </span>
-                  <button type="button" className="bg-darkBlue text-white font-medium w-[7rem] h-[2rem] md:w-[8rem] md:h-[3rem] text-center items-center text-md rounded-sm ml-[6rem] md:ml-[6rem] pr-2 md:pr-3">Add to Cart
+                  <button type="button" className="bg-darkBlue text-white font-medium w-[7rem] h-[2rem] md:w-[8rem] md:h-[3rem] text-center items-center text-md rounded-sm ml-[6rem] md:ml-[6rem] pr-2 md:pr-3">
+                    <a href="/cartContainer">Add to Cart</a>
                   <TfiShoppingCart className="text-white font-extrabold ml-[105px] md:ml-[105px] -mt-5 "/>
                   </button>
                </div>
@@ -88,7 +113,7 @@ console.log(products)
        </div> 
        </section>
 
-       <footer className="bg-veryDarkBlue">
+       <footer className="bg-veryDarkBlue w-[100%] h-[70%]">
         <div className="flex flex-col-reverse justify-between px-6 py-10 mx-auto space-y-8 md:flex-row md:space-y-0">
           <div className="flex flex-col-reverse items-center justify-between space-y-12 md:flex-col md:space-y-0 md:items-start">
             <div className="mx-auto my-6 text-center text-white md:hidden">

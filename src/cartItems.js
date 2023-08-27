@@ -4,7 +4,7 @@ const cartItems = [
       title: 'Chicken (Broiler)',
       price: '4599.50',
       img:  'https://i.imgur.com/72f12Lw.jpg',
-   
+      
       amount: 1,
     },
     {
@@ -12,7 +12,7 @@ const cartItems = [
       title: 'Fish',
       price: '2587.03',
       img: 'https://i.imgur.com/m6TdvrH.jpg',
-      
+
       amount: 1,
     },
     {
@@ -20,6 +20,7 @@ const cartItems = [
       title: 'Chicken Lap',
       price: '3500.00',
       img: 'https://i.imgur.com/wlKCFCo.jpg',
+
       amount: 1,
     },
     {
@@ -27,6 +28,7 @@ const cartItems = [
       title: 'Cow Beef PerKg',
       price: '1899.50 ',
       img: 'https://i.imgur.com/4qKScwh.jpg',
+
       amount: 1,
     },
   ];

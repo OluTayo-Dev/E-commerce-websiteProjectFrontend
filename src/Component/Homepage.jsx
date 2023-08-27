@@ -11,18 +11,22 @@ import { FaInstagram } from "react-icons/fa";
 import { BsTwitter} from "react-icons/bs";
 import {TfiShoppingCart} from "react-icons/tfi";
 import {MdOutlineArrowRightAlt} from "react-icons/md";
+import { AiOutlineMenu } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import './Homepage.css';
+import { useState } from "react";
 
 
 
 function Homepage() {
+let [open, setOpen] = useState(false);
   const navigate = useNavigate();
   return (
   <div>
 
-    <div className="background h-screen">
-       <nav className="fixed mx-auto w-[100%] top-[0] bg-transparent mix-blend-normal  shadow-xl z-50 p-6 opacity-100">
+    <div className="background h-screen" onClick={() => setOpen(!open)}>
+       <nav className="sticky mx-auto w-[100%] top-[0] bg-transparent mix-blend-normal  shadow-xl z-50 p-6 opacity-100">
+        <AiOutlineMenu name={open ? "close" : "menu"} onClick={() => setOpen()} className="md:lg:hidden ml-[90%]" />
         <div className="flex items-center justify-between">
           <div className="pt-2">
             <p className="font-bold text-2xl text-brightRed">FARM<bold className="text-darkGrayishBlue">CONNECT</bold></p>
@@ -30,9 +34,9 @@ function Homepage() {
           <div className="hidden md:flex space-x-6">
             <a href="/product" className="hover:text-slate-500">Products</a>
             <a href="/cartContainer" className="hover:text-slate-500">Cart
-            <TfiShoppingCart className="text-black font-extrabold ml-[35px] md:ml-[35px] -mt-5 "/>
+            <TfiShoppingCart className="text-black font-extrabold ml-[20px] md:ml-[20px] -mt-5 "/>
             </a>
-            <a href="#" className="hover:text-slate-500">About Us</a> 
+            <a href="/aboutUs" className="hover:text-slate-500">About Us</a> 
             <a href="admin" className="hover:text-slate-500">Admin</a> 
            <button type="button" className="bg-slate-500 w-[5rem] text-white hover:bg-darkGreen">
              <a href="/signup">Sign Up</a>

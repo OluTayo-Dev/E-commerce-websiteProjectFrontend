@@ -1,12 +1,17 @@
 import  CartItem from "./CartItem";
 import { useDispatch, useSelector } from "react-redux";
-import { openModal } from "../features/modal/ModalSlice";
-import {CiSearch} from "react-icons/ci";
+import { clearCart} from '../features/cart/cartSlice';
+
+
 
 const CartContainer = () => {
+
     const dispatch = useDispatch();
-    const {cartItems, total, amount} = useSelector ((store) =>store.cart)
+    const {cartItems, total, amount} = useSelector ((store) => store.cart)
    
+    const handleOnChange = (e) => {
+      
+    }
    if(amount < 1) {
    return (
     <section className="cart">
@@ -27,16 +32,12 @@ const CartContainer = () => {
             <p className="font-bold text-2xl text-brightRed">FARM<bold className="text-darkGrayishBlue">CONNECT</bold></p>
           </div>
           <div className=" flex flex-1 justify-center">
-            <form>
-              <div className="flex">
-                <input type="text" placeholder="Search Products" className="flex-1 bg-zinc-100 px-4 border-b-2 border-black  w-[25rem] focus:outline-0 text-md" />
-                <CiSearch className="-ml-[25rem] mt-1 text-black" />
-              </div>
-            </form>
+          
           </div>
           <div className="hidden md:flex space-x-6">
             <a href="/" className="hover:text-slate-500">Home</a>
-            <a href="/About Us" className="hover:text-slate-500">About Us</a> 
+            <a href="/product" className="hover:text-slate-500">Products</a> 
+            <a href="/aboutUs" className="hover:text-slate-500">About Us</a>
             <a href="/admin" className="hover:text-slate-500">Admin</a>
           </div>
         </div>
@@ -44,12 +45,13 @@ const CartContainer = () => {
     <header>
         <h2>Your Items</h2>
     </header>
-  
-   <div>
-    {cartItems.map((item) => {
+    <div>
+      {cartItems?.map((item) => {
         return <CartItem key={item.id} {...item} />
-    })}
-   </div>
+          
+        
+       })}
+        </div>
    <footer>
     <hr />
     <div className="cart-total">
@@ -58,10 +60,11 @@ const CartContainer = () => {
         </h4>
     </div>
     <button className="btn clear-btn"
-     onClick={() => dispatch(openModal())}>
+     onClick={() => dispatch(clearCart())}>
         clear cart
     </button>
-
+     <button className="btn confirm-btn"
+     onClick={handleOnChange}><a href="/paystackIntegration">Submit</a></button>
    </footer>
  </section>
 
