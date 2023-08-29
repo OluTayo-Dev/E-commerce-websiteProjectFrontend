@@ -7,6 +7,7 @@
 .background{
     background-image: url("../Component/LoginImage.png");
     margin-top: -30rem;
+    width: 100%;
     
 
 }

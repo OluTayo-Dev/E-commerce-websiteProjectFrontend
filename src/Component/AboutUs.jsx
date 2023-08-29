@@ -8,8 +8,7 @@ import { FcAbout } from "react-icons/fc";
 
 function AboutUs() {
   return (
-
-    <div>
+   <div>
         <section className="w-[100%] h-[100%]">
         <nav className="fixed mx-auto w-[100%] top-[0] bg-transparent mix-blend-normal  shadow-xl z-50 p-6 opacity-100 ">
         <div className="flex items-center justify-between">

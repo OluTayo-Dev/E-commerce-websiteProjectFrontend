@@ -12,7 +12,6 @@ import { BsTwitter} from "react-icons/bs";
 import {TfiShoppingCart} from "react-icons/tfi";
 import {MdOutlineArrowRightAlt} from "react-icons/md";
 import { AiOutlineMenu } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
 import './Homepage.css';
 import { useState } from "react";
 
@@ -20,73 +19,101 @@ import { useState } from "react";
 
 function Homepage() {
 let [open, setOpen] = useState(false);
-  const navigate = useNavigate();
+ 
   return (
+
+
   <div>
+    <div className="background h-screen">
+    <nav  onClick={() => setOpen(!open)} className="text-3xl top-0 cursor-pointer sticky z-50 bg-slate-50">
 
-    <div className="background h-screen" onClick={() => setOpen(!open)}>
-       <nav className="sticky mx-auto w-[100%] top-[0] bg-transparent mix-blend-normal  shadow-xl z-50 p-6 opacity-100">
-        <AiOutlineMenu name={open ? "close" : "menu"} onClick={() => setOpen()} className="md:lg:hidden ml-[90%]" />
-        <div className="flex items-center justify-between">
-          <div className="pt-2">
-            <p className="font-bold text-2xl text-brightRed">FARM<bold className="text-darkGrayishBlue">CONNECT</bold></p>
-          </div>
-          <div className="hidden md:flex space-x-6">
-            <a href="/product" className="hover:text-slate-500">Products</a>
-            <a href="/cartContainer" className="hover:text-slate-500">Cart
-            <TfiShoppingCart className="text-black font-extrabold ml-[20px] md:ml-[20px] -mt-5 "/>
-            </a>
-            <a href="/aboutUs" className="hover:text-slate-500">About Us</a> 
-            <a href="admin" className="hover:text-slate-500">Admin</a> 
-           <button type="button" className="bg-slate-500 w-[5rem] text-white hover:bg-darkGreen">
-             <a href="/signup">Sign Up</a>
-            </button>
-           <button type="button" className="bg-slate-500 w-[5rem] text-white hover:bg-darkGreen"><a href="/login">Login</a>
-           </button>
-          </div>
-        </div>
-        </nav>
+        <span>
+        <p className="font-bold text-2xl text-brightRed md:lg:hidden">FARM<bold className="text-darkGrayishBlue">CONNECT</bold></p>
+        </span>
+      <AiOutlineMenu name={open ? "close" : "menu"} onClick={() => setOpen(!open)} className="md:lg:hidden ml-[90%] text-darkBlue font-bold"/>
+      <section className={`pb-12 absolute bg-slate-50 text-white md:lg:bg-white md:static md:z-0 z-[50] left-0 w-full md:w-auto  transition-all duration-500 ease-in ${
+            open ? "top-0 opacity-100" : "top-[-490px]"
+          } md:opacity-100 text-center `} >
+      <header className="py-2 md:lg:flex md:lg:justify-between pl-20 shadow-md rounded-xl sticky top-0 z-50">
+      <span>
+      <p className="font-bold text-2xl text-brightRed">FARM<bold className="text-darkGrayishBlue">CONNECT</bold></p>
+        </span>
+        
+        <ul className="md:lg:flex md:lg:gap-10 gap-6 md:lg:ml-52 mt-1 text-darkBlue font-semibold text-lg">
+          <li>
+            <a href="/" className="text-darkBlue font-medium hover:text-darkGrayishBlue">Home</a>
+          </li>
+          <li>
+            <a href="/product" className="text-darkBlue font-medium hover:text-darkGrayishBlue">Products</a>
+          </li>
+
+          <li>
+            <a href="/cartContainer" className="text-darkBlue font-medium hover:text-darkGrayishBlue">Carts<TfiShoppingCart className="-mt-[20px] md:lg:-mt-[20px] ml-16 md:lg:ml-16 text-darkBlue font-bold" /></a>
+          </li>
+
+          <li>
+            <a href="/aboutUs" className="text-darkBlue font-medium hover:text-darkGrayishBlue">About Us</a>
+
+          </li>
+          <li>
+            <a href="/adminLogin">Admin</a>
+
+          </li>
+        </ul>
+        <span>
+        <button className="md:ml-8 ml-20 md:lg:w-[8rem] w-[8rem] flex gap-6 bg-darkBlue hover:bg-darkGrayishBlue  md:lg:text-white px-8 rounded-none text-[17px]">
+              {" "}
+              
+            <a href="/signup">Sign Up</a>
+          </button>
+        </span>
+      </header>
+      </section>
+    </nav>
+    </div>
+   
+    
      
-      </div>
+    
 
-      <section className="bg-white">
+      <section className="bg-white w-[100%]">
         <div className="flex flex-col space-y-12 items-center md:space-y-0">
-          <h1 className="max-w-4xl text-4xl font-bold text-center md:text-6xl md:text-center md:ml-[8rem] pt-10 text-darkGrayishBlue shadow-sm baseline">You are Welcome to FARMCONNECT, Your Best plug for Poultry Products</h1>
-          <p className="max-w-4xl text-xl font-medium text-center md:text-center text-black py-3">View the list of our Products Category Below</p>
+          <h1 className="max-w-4xl text-3xl font-bold text-center md:text-6xl md:text-center pt-10 text-darkGrayishBlue shadow-sm baseline">You are Welcome to FARMCONNECT, Your Best plug for Poultry Products</h1>
+          <p className="max-w-4xl text-lg font-medium text-center md:text-center text-black py-3">View the list of our Products Category Below</p>
         </div>
       </section>
          
-       <section>
-        <div className="flex flex-col space-y-12 items-center md:space-y-0 mt-8">
-          <div className="flex flex-row  justify-center space-x-12">
-          <span className="flex flex-col text-darkBlue font-bold text-2xl md:text-3xl">
+       <section className="w-[100%]">
+        <div className="flex flex-col items-center md:space-y-0 mt-8">
+          <div className="flex flex-row  justify-center">
+          <span className="flex flex-col text-darkGrayishBlue font-bold text-lg md:text-3xl">
             <p>Chicken  |</p>
           </span>
 
-          <span className="flex flex-col text-darkBlue font-bold text-2xl md:text-3xl">
+          <span className="flex flex-col text-darkGrayishBlue font-bold text-lg md:text-3xl">
             <p>Turkey  |</p>
           </span>
 
-          <span className="flex flex-col text-darkBlue font-bold text-2xl md:text-3xl">
+          <span className="flex flex-col text-darkGrayishBlue font-bold text-lg md:text-3xl">
             <p>Meat  |</p>
           </span>
 
-          <span className="flex flex-col text-darkBlue font-bold text-2xl md:text-3xl">
+          <span className="flex flex-col text-darkGrayishBlue font-bold text-lg md:text-3xl">
             <p>Egg  |</p>
           </span>
 
-          <span className="flex flex-col text-darkBlue font-bold text-2xl md:text-3xl">
+          <span className="flex flex-col text-darkGrayishBlue font-bold text-lg md:text-3xl">
             <p>Frozen Fish  </p>
           </span>
           </div>
         </div>
        </section>
 
-       <section>
+       <section className="w-[100%]">
         <div className="flex flex-col-reverse md:flex-row items-center px-6 mx-auto mt-10 space-y-0 md:space-y-0">
           <div className="flex flex-col md:flex-row mb-32  md:w-1/2 w-1/2">
-             <img src={Broiler} alt="" className="w-[50%]  md:ml-[5rem]" /> 
-             <button type="button" className="bg-darkBlue text-white font-semibold text-lg w-[8rem] md:w-[10rem] h-[3rem] md:h-[3rem] md:mt-[34rem] mt-[26rem]">
+             <img src={Broiler} alt="" className="w-[100%] md:lg:w-[65%]" /> 
+             <button type="button" className="bg-darkBlue text-white font-semibold text-lg w-[8rem] md:w-[10rem] h-[3rem] md:h-[3rem] md:mt-[34rem] mt-[5rem ]">
              <a href="/product">See More</a>
              <MdOutlineArrowRightAlt className="text-white -mt-5 ml-[8rem] text-xl"/>
              </button>
@@ -94,8 +121,8 @@ let [open, setOpen] = useState(false);
           </div>
 
           <div className=" flex flex-col md:flex-row w-1/2 md:w-1/2">
-               <img src={WholeChicken} alt="cowliver" className="w-[50%] h-[30%] shadow-lg  md:ml-[15rem]" />
-               <button type="button" className="bg-darkBlue text-white font-semibold text-lg w-[8rem] md:w-[10rem] h-[3rem] md:h-[3rem] md:mt-[32rem] mt-[26rem] mr-[5rem]">
+               <img src={WholeChicken} alt="cowliver" className="w-[100%] md:lg:w-[50%] h-[30%] shadow-lg  md:ml-[5rem]" />
+               <button type="button" className="bg-darkBlue text-white font-semibold text-lg w-[8rem] md:w-[10rem] h-[3rem] md:h-[3rem] md:mt-[32rem] mt-[5rem] mr-[5rem]">
                <a href="/product">See More</a>
                  <MdOutlineArrowRightAlt className="text-white -mt-5 ml-[8rem] text-xl"/>
               </button>

@@ -6,12 +6,14 @@ import {CiSearch} from "react-icons/ci";
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { BsTwitter} from "react-icons/bs";
+import {AiOutlineMenu } from "react-icons/ai";
 import {TfiShoppingCart} from "react-icons/tfi";
 
 
 export default function Product() {
 const [products, getProducts] = useState([]);
 const [filteredProducts, setFilteredProducts] = useState([]);
+const [open, setOpen] = useState(false);
 
 
 const handleSearch = (e) =>{
@@ -40,42 +42,67 @@ useEffect(() => {
 console.log(products)
 
 
-  return (
+return (
     <div>
      <section>
-       <nav className="fixed mx-auto w-[100%] top-[0] bg-zinc-100 z-50 p-6">
-        <div className="flex items-center justify-between">
-          <div className="pt-2">
-            <p className="font-bold text-2xl text-brightRed">FARM<bold className="text-darkGrayishBlue">CONNECT</bold></p>
-          </div>
-          <div className=" flex flex-1 justify-center">
+        <nav  onClick={() => setOpen(!open)} className="text-3xl top-0 cursor-pointer sticky z-50 bg-slate-50">
+
+      <span>
+      <p className="font-bold text-2xl text-brightRed md:lg:hidden">FARM<bold className="text-darkGrayishBlue">CONNECT</bold></p>
+    </span>
+    <AiOutlineMenu name={open ? "close" : "menu"} onClick={() => setOpen(!open)} className="md:lg:hidden ml-[90%] text-darkBlue font-bold"/>
+   <section className={`pb-12 absolute bg-slate-50 text-white md:lg:bg-white md:static md:z-0 z-[50] left-0 w-full md:w-auto  transition-all duration-500 ease-in ${
+    open ? "top-0 opacity-100" : "top-[-490px]"
+  } md:opacity-100 text-center `} >
+   <header className="py-2 md:lg:flex md:lg:justify-between pl-20 shadow-md rounded-xl sticky top-0 z-50  ">
+   <span>
+  <p className="font-bold text-2xl text-brightRed">FARM<bold className="text-darkGrayishBlue">CONNECT</bold></p>
+  </span>
+
+   <ul className="md:lg:flex md:lg:gap-6 gap-6 md:lg:ml-52 mt-1 space-x-2 text-darkBlue font-semibold text-sm">
+  <li>
+    <a href="/" className="text-darkBlue font-medium hover:text-darkGrayishBlue">Home</a>
+  </li>
+  <li>
+    <a href="/product" className="text-darkBlue font-medium hover:text-darkGrayishBlue">Products</a>
+  </li>
+
+  <li>
+    <a href="/cartContainer" className="text-darkBlue font-medium hover:text-darkGrayishBlue">Carts<TfiShoppingCart className="-mt-[18px] md:lg:-mt-[18px] ml-16 md:lg:ml-12 text-darkBlue font-bold" /></a>
+  </li>
+
+  <li>
+    <a href="/aboutUs" className="text-darkBlue font-medium hover:text-darkGrayishBlue">About Us</a>
+
+  </li>
+  <li>
+    <a href="/adminLogin" className="text-darkBlue font-medium hover:text-darkGrayishBlue px-4">Admin</a>
+
+  </li>
+</ul>
+<div className=" flex flex-1 gap-6">
             <form>
               <div className="flex">
                 <input type="text" placeholder="Search Products" 
                 onChange={(event)=> handleSearch(event)}
-                className="flex-1 bg-zinc-100 px-4 border-b-2 border-black  w-[25rem] focus:outline-0 text-md" />
-                <CiSearch className="-ml-[25rem] mt-1 text-black" />
+                className="flex-1 bg-white px-4 border-b-2 border-black md:lgml[5rem] w-[10rem] md:lg:w-[18rem] focus:outline-0 text-sm" />
+                <CiSearch className=" mt-1 md:lg:mt-1 -ml-[35rem] md:lg:w-[35rem] text-slate-400 text-lg" />
               </div>
             </form>
           </div>
-          <div className="hidden md:flex space-x-6">
-            <a href="/" className="hover:text-slate-500">Home</a>
-            <a href="/cartContainer" className="hover:text-slate-500">Cart
-            <TfiShoppingCart className="text-darkBlue font-extrabold ml-[35px] md:ml-[35px] -mt-5 "/>
-            </a>
-            <a href="/About Us" className="hover:text-slate-500">About Us</a> 
-            <a href="/admin" className="hover:text-slate-500">Admin</a>
-          </div>
-        </div>
-        </nav>
-       </section>
-       <div className="flex flex-col mx-auto space-y-0 md:space-y-0 text-center md:text-center">
+</header>
+</section>
+</nav>
+</section>
+
+
+       <div className="flex flex-col mx-auto space-y-0 md:space-y-0 text-center md:text-center items-center">
        <p className="max-w-xl text-xl font-medium text-center md:text-center text-black">View the list of our Products Below</p>
        </div>
 
 
       <section>
-       <div className="flex flex-col space-y-8">
+       <div className="flex flex-col">
          <div className="grid grid-cols-4 gap-1 mt-[5rem] h-full min-h-[50vh]">
             {products.map((product) => {
               return (
@@ -100,7 +127,7 @@ console.log(products)
                     <p className="font-bold">Category:</p>
                   <p>{product.category}</p>
                   </span>
-                  <button type="button" className="bg-darkBlue text-white font-medium w-[7rem] h-[2rem] md:w-[8rem] md:h-[3rem] text-center items-center text-md rounded-sm ml-[6rem] md:ml-[6rem] pr-2 md:pr-3">
+                  <button type="button" className="bg-darkBlue text-white font-medium w-[7rem] h-[2rem] md:w-[8rem] md:h-[3rem] text-center items-center text-md rounded-sm ml-[4rem] md:lg:ml-[4rem] pr-2 md:pr-3">
                     <a href="/cartContainer">Add to Cart</a>
                   <TfiShoppingCart className="text-white font-extrabold ml-[105px] md:ml-[105px] -mt-5 "/>
                   </button>
@@ -178,4 +205,7 @@ console.log(products)
        </footer>
     </div>
   )
+
 }
+  
+

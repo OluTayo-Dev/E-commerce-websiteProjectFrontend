@@ -37,6 +37,15 @@ export default function Signup() {
       }
      };
     
+     const googleAuth = () => {
+      window.open(
+          `${process.env.REACT_APP_API_URL}/auth/google/callback`,
+          "_self"
+          
+      );
+      // navigate("/")
+      
+    };
       
     
    
@@ -68,7 +77,7 @@ export default function Signup() {
 
              <button className="bg-darkBlue text-white text-sm font-normal hover:bg-black text-center ml-20 mt-5 md:ml-24 w-[8rem] h-[3rem] md:w[10rem] md:h-[2rem]">Sign Up</button>
              <p className="text-center font-medium py-3">Or</p>
-             <button className="bg-darkBlue text-white text-sm font-normal hover:bg-black text-center ml-20 mt-5 md:ml-20 w-[10rem] h-[3rem] md:w[12rem] md:h-[2rem]">Sign Up with Google
+             <button className="bg-darkBlue text-white text-sm font-normal hover:bg-black text-center ml-20 mt-5 md:ml-20 w-[10rem] h-[3rem] md:w[12rem] md:h-[2rem]" onClick={googleAuth}>Sign Up with Google
              <FcGoogle className="-mt-4 mx-[2px]" />
              </button>
           </form>
