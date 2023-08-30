@@ -82,15 +82,15 @@ function AboutUs() {
             </div>
 
             <div className="flex justify-center space-x-4">
-              <a href="#">
+              <a href="fb">
               <FaFacebook className="text-white font-medium w-[2rem] h-[2rem]"/>
               </a>
 
-              <a href="#">
+              <a href="IG">
               <FaInstagram className="text-white font-medium w-[2rem] h-[2rem]"/>
               </a>
 
-              <a href="#">
+              <a href="twitter">
               <BsTwitter className="text-white font-medium w-[2rem] h-[2rem]"/>
               </a>
 
@@ -102,10 +102,10 @@ function AboutUs() {
 
           <div className="flex justify-around space-x-32">
             <div className="flex flex-col space-y-3 text-white font-medium">
-              <a href="#" className="hover:text-darkGrayishBlue">Home</a>
-              <a href="#" className="hover:text-darkGrayishBlue">About Us</a>
-              <a href="#" className="hover:text-darkGrayishBlue">Admin</a>
-              <a href="#" className="hover:text-darkGrayishBlue">Cart</a>
+              <a href="/" className="hover:text-darkGrayishBlue">Home</a>
+              <a href="aboutUs" className="hover:text-darkGrayishBlue">About Us</a>
+              <a href="admin" className="hover:text-darkGrayishBlue">Admin</a>
+              <a href="cart" className="hover:text-darkGrayishBlue">Cart</a>
 
             </div>
 

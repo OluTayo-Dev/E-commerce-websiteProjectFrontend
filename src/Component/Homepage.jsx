@@ -1,9 +1,8 @@
 //import React from 'react'
-import Chicken from "../Asset/Chicken.png";
-import CatFish from "../Asset/CatFish.png";
+//import CatFish from "../Asset/CatFish.png";
 import Broiler from "../Asset/Broiler.png";
 import WholeChicken from "../Asset/WholeChicken.png";
-import CowLiver  from "../Asset/CowLiver.jpg"
+///import CowLiver  from "../Asset/CowLiver.jpg"
 // import Suasage from "../Asset/Suasage.png";
 //import { Link } from "react-router-dom";
 import { FaFacebook } from "react-icons/fa";
@@ -36,27 +35,27 @@ let [open, setOpen] = useState(false);
           } md:opacity-100 text-center `} >
       <header className="py-2 md:lg:flex md:lg:justify-between pl-20 shadow-md rounded-xl sticky top-0 z-50">
       <span>
-      <p className="font-bold text-2xl text-brightRed">FARM<bold className="text-darkGrayishBlue">CONNECT</bold></p>
+      <p className="font-bold text-2xl text-red-500">FARM<bold className="text-blue-950">CONNECT</bold></p>
         </span>
         
         <ul className="md:lg:flex md:lg:gap-10 gap-6 md:lg:ml-52 mt-1 text-darkBlue font-semibold text-lg">
           <li>
-            <a href="/" className="text-darkBlue font-medium hover:text-darkGrayishBlue">Home</a>
+            <a href="/" className="text-blue-950 font-medium hover:text-slate-300">Home</a>
           </li>
           <li>
-            <a href="/product" className="text-darkBlue font-medium hover:text-darkGrayishBlue">Products</a>
-          </li>
-
-          <li>
-            <a href="/cartContainer" className="text-darkBlue font-medium hover:text-darkGrayishBlue">Carts<TfiShoppingCart className="-mt-[20px] md:lg:-mt-[20px] ml-16 md:lg:ml-16 text-darkBlue font-bold" /></a>
+            <a href="/product" className="text-blue-950 font-medium hover:text-slate-300">Products</a>
           </li>
 
           <li>
-            <a href="/aboutUs" className="text-darkBlue font-medium hover:text-darkGrayishBlue">About Us</a>
+            <a href="/cartContainer" className="text-blue-950 font-medium hover:text-slate-300">Carts<TfiShoppingCart className="-mt-[20px] md:lg:-mt-[20px] ml-16 md:lg:ml-16 text-darkBlue font-bold" /></a>
+          </li>
+
+          <li>
+            <a href="/aboutUs" className="text-blue-950 font-medium hover:text-slate-300">About Us</a>
 
           </li>
           <li>
-            <a href="/adminLogin">Admin</a>
+            <a href="/adminLogin" className="text-blue-950 font-medium hover:text-slate-300">Admin</a>
 
           </li>
         </ul>
@@ -86,23 +85,23 @@ let [open, setOpen] = useState(false);
        <section className="w-[100%]">
         <div className="flex flex-col items-center md:space-y-0 mt-8">
           <div className="flex flex-row  justify-center">
-          <span className="flex flex-col text-darkGrayishBlue font-bold text-lg md:text-3xl">
+          <span className="flex flex-col text-slate-600 font-bold text-lg md:text-3xl">
             <p>Chicken  |</p>
           </span>
 
-          <span className="flex flex-col text-darkGrayishBlue font-bold text-lg md:text-3xl">
+          <span className="flex flex-col text-slate-600 font-bold text-lg md:text-3xl">
             <p>Turkey  |</p>
           </span>
 
-          <span className="flex flex-col text-darkGrayishBlue font-bold text-lg md:text-3xl">
+          <span className="flex flex-col text-slate-600 font-bold text-lg md:text-3xl">
             <p>Meat  |</p>
           </span>
 
-          <span className="flex flex-col text-darkGrayishBlue font-bold text-lg md:text-3xl">
+          <span className="flex flex-col text-slate-600 font-bold text-lg md:text-3xl">
             <p>Egg  |</p>
           </span>
 
-          <span className="flex flex-col text-darkGrayishBlue font-bold text-lg md:text-3xl">
+          <span className="flex flex-col text-slate-600 font-bold text-lg md:text-3xl">
             <p>Frozen Fish  </p>
           </span>
           </div>
@@ -132,7 +131,7 @@ let [open, setOpen] = useState(false);
        </section>
 
 
-       <footer className="bg-veryDarkBlue">
+       <footer className="bg-blue-950">
         <div className="flex flex-col-reverse justify-between px-6 py-10 mx-auto space-y-8 md:flex-row md:space-y-0">
           <div className="flex flex-col-reverse items-center justify-between space-y-12 md:flex-col md:space-y-0 md:items-start">
             <div className="mx-auto my-6 text-center text-white md:hidden">
@@ -140,19 +139,19 @@ let [open, setOpen] = useState(false);
             </div>
 
             <div>
-            <p className="font-bold text-2xl text-brightRed">FARM<bold     className="text-darkGrayishBlue">CONNECT</bold></p>
+            <p className="font-bold text-2xl text-red-500">FARM<bold     className="text-darkGrayishBlue">CONNECT</bold></p>
             </div>
 
             <div className="flex justify-center space-x-4">
-              <a href="#">
+              <a href="faceook">
               <FaFacebook className="text-white font-medium w-[2rem] h-[2rem]"/>
               </a>
 
-              <a href="#">
+              <a href="instagram">
               <FaInstagram className="text-white font-medium w-[2rem] h-[2rem]"/>
               </a>
 
-              <a href="#">
+              <a href="twitter">
               <BsTwitter className="text-white font-medium w-[2rem] h-[2rem]"/>
               </a>
 
@@ -164,10 +163,10 @@ let [open, setOpen] = useState(false);
 
           <div className="flex justify-around space-x-32">
             <div className="flex flex-col space-y-3 text-white font-medium">
-              <a href="#" className="hover:text-darkGrayishBlue">Home</a>
-              <a href="#" className="hover:text-darkGrayishBlue">About Us</a>
-              <a href="#" className="hover:text-darkGrayishBlue">Admin</a>
-              <a href="#" className="hover:text-darkGrayishBlue">Cart</a>
+              <a href="home" className="hover:text-darkGrayishBlue">Home</a>
+              <a href="aboutUs" className="hover:text-darkGrayishBlue">About Us</a>
+              <a href="admin" className="hover:text-darkGrayishBlue">Admin</a>
+              <a href="cart" className="hover:text-darkGrayishBlue">Cart</a>
 
             </div>
 

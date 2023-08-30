@@ -30,7 +30,7 @@ const handleSearch = (e) =>{
     });
     getProducts(results)
   } else {
-    getProducts(filteredProducts);
+    getProducts(setFilteredProducts);
   }
 }
 
@@ -109,7 +109,7 @@ return (
                <div key={product} className="">
                 <div className="items-center p-6 space-y-6">
                 <div className="p-6 space-y-2 rounded-lg bg-gray-100 shadow-lg">
-                  <img src={product.images} className="w-[5rem] h-[5rem] ml-[5rem]" />
+                  <img src={product.images} alt="" className="w-[5rem] h-[5rem] ml-[5rem]" />
 
                   <span className="flex gap-2"> 
                     <p className="font-bold">Name:</p>
@@ -152,15 +152,15 @@ return (
             </div>
 
             <div className="flex justify-center space-x-4">
-              <a href="#">
+              <a href="f">
               <FaFacebook className="text-white font-medium w-[2rem] h-[2rem]"/>
               </a>
 
-              <a href="#">
+              <a href="Ig">
               <FaInstagram className="text-white font-medium w-[2rem] h-[2rem]"/>
               </a>
 
-              <a href="#">
+              <a href="Twitter">
               <BsTwitter className="text-white font-medium w-[2rem] h-[2rem]"/>
               </a>
 
@@ -172,10 +172,10 @@ return (
 
           <div className="flex justify-around space-x-32">
             <div className="flex flex-col space-y-3 text-white font-medium">
-              <a href="#" className="hover:text-darkGrayishBlue">Home</a>
-              <a href="#" className="hover:text-darkGrayishBlue">About Us</a>
-              <a href="#" className="hover:text-darkGrayishBlue">Admin</a>
-              <a href="#" className="hover:text-darkGrayishBlue">Cart</a>
+              <a href="home" className="hover:text-darkGrayishBlue">Home</a>
+              <a href="aboutUs" className="hover:text-darkGrayishBlue">About Us</a>
+              <a href="admin" className="hover:text-darkGrayishBlue">Admin</a>
+              <a href="cart" className="hover:text-darkGrayishBlue">Cart</a>
 
             </div>
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { TfiShoppingCart } from "react-icons/tfi";
 import axios from "axios";
 import {useState } from "react";
-import {useEffect} from "react";
+//import {useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 
 
