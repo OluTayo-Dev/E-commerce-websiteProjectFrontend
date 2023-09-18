@@ -78,7 +78,7 @@ const PaystackIntegration = () => {
                 </div>
 
                <div className="my-2">
-               <button type="submit" className="w-[9rem] h-[2rem] text-white bg-darkBlue hover:bg-brightRed mt-3 md:lg:mt-3" onClick={paywithpaystack}>Pay</button>
+               <button type="submit" className="w-[9rem] h-[2rem] text-white bg-blue-950 hover:bg-black mt-3 md:lg:mt-3" onClick={paywithpaystack}>Pay</button>
                </div>
             </form>
         </div>

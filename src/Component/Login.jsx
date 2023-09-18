@@ -57,7 +57,7 @@ export default function Login() {
              onChange={onChangePassword}
              className="border-b-2 ml-10 w-[12rem] h-[2rem] md:w-[15rem] md:h-[3rem] py-6 focus:outline-none" />
 
-             <button className="bg-darkBlue text-white text-sm font-normal hover:bg-black text-center ml-20 mt-12 md:ml-24 w-[8rem] h-[3rem] md:w[10rem] md:h-[2rem]">Login</button>
+             <button className="bg-blue-950 text-white text-sm font-normal hover:bg-black text-center ml-20 mt-12 md:ml-24 w-[8rem] h-[3rem] md:w[10rem] md:h-[2rem]">Login</button>
            
             
           </form>

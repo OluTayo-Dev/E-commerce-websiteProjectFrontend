@@ -4,9 +4,10 @@ import Parent from "./Component/Parent";
 import CartContainer from "./Component/CartContainer";
 import { useDispatch, useSelector} from "react-redux";
 import { calculateTotals, getCartItems} from "./features/cart/cartSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Modal from "./Component/Modal";
 import Signup from "./Component/Signup";
+import axios from "axios";
 import Login from "./Component/Login";
 import Admin from "./Component/Admin";
 import Product from "./Component/Product";
@@ -19,7 +20,22 @@ import PaystackIntegration from "./paystack/PaystackIntegration";
 function App() {
   const { cartItems, isLoading } = useSelector((store) => store.cart);
   const { isOpen } = useSelector((store) => store.modal)
+  const [user, setUser] = useState(null);
   //const dispatch = useDispatch();
+
+  const getUser = async () => {
+    try{
+      const url=`${process.env.REACT_APP_API_URL}/auth/login/success`;
+      const {data} = await axios.get(url, {withCredentials: true});
+      setUser(data.user._json);
+    } catch(err) {
+       console.log(err);
+
+    }
+  }
+  useEffect(() =>{
+    getUser();
+  }, []);
 
   const dispatch = useDispatch();
   useEffect(() => { 

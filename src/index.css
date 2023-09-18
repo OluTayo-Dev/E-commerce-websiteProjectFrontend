@@ -132,7 +132,7 @@ nav {
   padding: 1.25rem 2rem;
 }
 .nav-center {
-  max-width: var(--fixed-width);
+  /* max-width: var(--fixed-width); */
   width: 100%;
   margin: 0 auto;
   display: flex;

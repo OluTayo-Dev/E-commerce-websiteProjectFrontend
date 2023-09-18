@@ -16,8 +16,16 @@ import { useState } from "react";
 
 
 
-function Homepage() {
+function Homepage(userDetails) {
 let [open, setOpen] = useState(false);
+
+const user = userDetails;
+const logout = () => {
+  window.open(
+    `${process.env.REACT_APP_API_URL}/auth/logout`,
+    "self"
+  )
+}
  
   return (
 
@@ -29,7 +37,7 @@ let [open, setOpen] = useState(false);
         <span>
         <p className="font-bold text-2xl text-brightRed md:lg:hidden">FARM<bold className="text-darkGrayishBlue">CONNECT</bold></p>
         </span>
-      <AiOutlineMenu name={open ? "close" : "menu"} onClick={() => setOpen(!open)} className="md:lg:hidden ml-[90%] text-darkBlue font-bold"/>
+      <AiOutlineMenu name={open ? "close" : "menu"} onClick={() => setOpen(!open)} className="md:lg:hidden ml-[90%] text-blue-950 font-bold"/>
       <section className={`pb-12 absolute bg-slate-50 text-white md:lg:bg-white md:static md:z-0 z-[50] left-0 w-full md:w-auto  transition-all duration-500 ease-in ${
             open ? "top-0 opacity-100" : "top-[-490px]"
           } md:opacity-100 text-center `} >
@@ -38,20 +46,20 @@ let [open, setOpen] = useState(false);
       <p className="font-bold text-2xl text-red-500">FARM<bold className="text-blue-950">CONNECT</bold></p>
         </span>
         
-        <ul className="md:lg:flex md:lg:gap-10 gap-6 md:lg:ml-52 mt-1 text-darkBlue font-semibold text-lg">
+        <ul className="md:lg:flex md:lg:gap-10 gap-6 md:lg:ml-52 mt-1 text-darkBlue font-semibold text-[17px]">
           <li>
-            <a href="/" className="text-blue-950 font-medium hover:text-slate-300">Home</a>
+            <a href="/" className="text-blue-950 font-medium hover:text-slate-400">Home</a>
           </li>
           <li>
-            <a href="/product" className="text-blue-950 font-medium hover:text-slate-300">Products</a>
-          </li>
-
-          <li>
-            <a href="/cartContainer" className="text-blue-950 font-medium hover:text-slate-300">Carts<TfiShoppingCart className="-mt-[20px] md:lg:-mt-[20px] ml-16 md:lg:ml-16 text-darkBlue font-bold" /></a>
+            <a href="/product" className="text-blue-950 font-medium hover:text-slate-400">Products</a>
           </li>
 
           <li>
-            <a href="/aboutUs" className="text-blue-950 font-medium hover:text-slate-300">About Us</a>
+            <a href="/cartContainer" className="text-blue-950 font-medium hover:text-slate-400">Carts<TfiShoppingCart className="-mt-[24px] md:lg:-mt-[24px] ml-16 md:lg:ml-16 text-blue-950 font-bold" /></a>
+          </li>
+
+          <li>
+            <a href="/aboutUs" className="text-blue-950 font-medium hover:text-slate-400">About Us</a>
 
           </li>
           <li>
@@ -60,10 +68,11 @@ let [open, setOpen] = useState(false);
           </li>
         </ul>
         <span>
-        <button className="md:ml-8 ml-20 md:lg:w-[8rem] w-[8rem] flex gap-6 bg-darkBlue hover:bg-darkGrayishBlue  md:lg:text-white px-8 rounded-none text-[17px]">
+        <button className="md:ml-8 ml-20 md:lg:w-[8rem] w-[8rem] flex gap-6 bg-blue-950 hover:bg-slate-400  md:lg:text-white px-8 rounded-none text-[17px]">
               {" "}
               
             <a href="/signup">Sign Up</a>
+            
           </button>
         </span>
       </header>
@@ -112,7 +121,7 @@ let [open, setOpen] = useState(false);
         <div className="flex flex-col-reverse md:flex-row items-center px-6 mx-auto mt-10 space-y-0 md:space-y-0">
           <div className="flex flex-col md:flex-row mb-32  md:w-1/2 w-1/2">
              <img src={Broiler} alt="" className="w-[100%] md:lg:w-[65%]" /> 
-             <button type="button" className="bg-darkBlue text-white font-semibold text-lg w-[8rem] md:w-[10rem] h-[3rem] md:h-[3rem] md:mt-[34rem] mt-[5rem ]">
+             <button type="button" className="bg-blue-950 text-white font-semibold text-lg w-[8rem] md:w-[10rem] h-[3rem] md:h-[3rem] md:mt-[34rem] mt-[5rem ]">
              <a href="/product">See More</a>
              <MdOutlineArrowRightAlt className="text-white -mt-5 ml-[8rem] text-xl"/>
              </button>
@@ -121,7 +130,7 @@ let [open, setOpen] = useState(false);
 
           <div className=" flex flex-col md:flex-row w-1/2 md:w-1/2">
                <img src={WholeChicken} alt="cowliver" className="w-[100%] md:lg:w-[50%] h-[30%] shadow-lg  md:ml-[5rem]" />
-               <button type="button" className="bg-darkBlue text-white font-semibold text-lg w-[8rem] md:w-[10rem] h-[3rem] md:h-[3rem] md:mt-[32rem] mt-[5rem] mr-[5rem]">
+               <button type="button" className="bg-blue-950 text-white font-semibold text-lg w-[8rem] md:w-[10rem] h-[3rem] md:h-[3rem] md:mt-[32rem] mt-[5rem] mr-[5rem]">
                <a href="/product">See More</a>
                  <MdOutlineArrowRightAlt className="text-white -mt-5 ml-[8rem] text-xl"/>
               </button>
@@ -139,7 +148,7 @@ let [open, setOpen] = useState(false);
             </div>
 
             <div>
-            <p className="font-bold text-2xl text-red-500">FARM<bold     className="text-darkGrayishBlue">CONNECT</bold></p>
+            <p className="font-bold text-2xl text-red-500">FARM<bold     className="text-slate-400">CONNECT</bold></p>
             </div>
 
             <div className="flex justify-center space-x-4">
@@ -163,10 +172,10 @@ let [open, setOpen] = useState(false);
 
           <div className="flex justify-around space-x-32">
             <div className="flex flex-col space-y-3 text-white font-medium">
-              <a href="home" className="hover:text-darkGrayishBlue">Home</a>
-              <a href="aboutUs" className="hover:text-darkGrayishBlue">About Us</a>
-              <a href="admin" className="hover:text-darkGrayishBlue">Admin</a>
-              <a href="cart" className="hover:text-darkGrayishBlue">Cart</a>
+              <a href="home" className="hover:text-slate-400">Home</a>
+              <a href="aboutUs" className="hover:text-slate-400">About Us</a>
+              <a href="admin" className="hover:text-slate-400">Admin</a>
+              <a href="cart" className="hover:text-slate-400">Carts</a>
 
             </div>
 
@@ -181,7 +190,7 @@ let [open, setOpen] = useState(false);
             <form>
               <div className="flex">
                 <input type="text" className="flex-1 px-4 rounded-none focus:outline-none w-[10rem] h-[4rem]" placeholder="Send in your messages" />
-                <button className="px-6 py-2 text-white rounded-none bg-brightRed hover:bg-brightRedLight focus:outline-none">
+                <button className="px-6 py-2 text-white rounded-none bg-slate-500 hover:bg-black focus:outline-none">
                   Submit
                 </button>
               </div>

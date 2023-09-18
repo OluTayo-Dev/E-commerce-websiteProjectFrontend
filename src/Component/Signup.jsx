@@ -2,14 +2,43 @@ import { useState } from 'react'
 import { FcGoogle} from "react-icons/fc";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import GoogleLogin from "react-google-login";
 
 export default function Signup() {
+  const [loginData, setLoginData] = useState(
+    localStorage.getItem('loginData')
+    ? JSON.parse(localStorage.getItem('loginData'))
+    : null
+  );
 
-    // const [loginPage, setLoginPage] = useState({
-    //     page1: true,
-    //     page2: false
-    //   });
+
+  const handleFailure = (result) => {
+     alert(result);
+  };
+  const handleLogin = async (googleData) => {
+    const res = await fetch('/api/google-login', {
+      method: 'POST',
+      body: JSON.stringify({
+        token: googleData.tokenId,
+      }),
+      headers: {
+        'Content-Type' : 'application/json',
+      },
+    });
+
+    const data = await res.json();
+    setLoginData(data);
+    localStorage.setItem('loginData', JSON.stringify(data));
+  };
+
+ 
   
+
+
+  const handleLogout = () => {
+    localStorage.removeItem('loginData');
+    setLoginData(null);
+  }
     const navigate = useNavigate();
 
       const [input, setInput] = useState({
@@ -37,15 +66,16 @@ export default function Signup() {
       }
      };
     
-     const googleAuth = () => {
-      window.open(
-          `${process.env.REACT_APP_API_URL}/auth/google/callback`,
-          "_self"
-          
-      );
-      // navigate("/")
+    //  const googleAuth = () => {
       
-    };
+    //   window.open(
+    //       `${process.env.REACT_APP_API_URL}/auth/google/callback`,
+    //       "_self"
+          
+    //   );
+     // navigate("/")
+      
+    
       
     
    
@@ -75,13 +105,36 @@ export default function Signup() {
             onChange={handleOnChange}
              className="border-b-2 ml-10 w-[12rem] h-[2rem] md:w-[15rem] md:h-[3rem] py-2 focus:outline-none" />
 
-             <button className="bg-darkBlue text-white text-sm font-normal hover:bg-black text-center ml-20 mt-5 md:ml-24 w-[8rem] h-[3rem] md:w[10rem] md:h-[2rem]">Sign Up</button>
+             <button className="bg-blue-950 text-white text-sm font-normal hover:bg-black text-center ml-20 mt-5 md:ml-24 w-[8rem] h-[3rem] md:w[10rem] md:h-[2rem]">Sign Up</button>
              <p className="text-center font-medium py-3">Or</p>
-             <button className="bg-darkBlue text-white text-sm font-normal hover:bg-black text-center ml-20 mt-5 md:ml-20 w-[10rem] h-[3rem] md:w[12rem] md:h-[2rem]" onClick={googleAuth}>Sign Up with Google
+             <button className="bg-blue-950 text-white text-sm font-normal hover:bg-black text-center ml-20 mt-5 md:ml-20 w-[10rem] h-[3rem] md:w[12rem] md:h-[2rem]">Sign Up with Google
              <FcGoogle className="-mt-4 mx-[2px]" />
              </button>
+            
+             <div>
+               {
+              loginData ? (
+                <div>
+                  <h3>You logged in as {loginData.email}</h3>
+                  <button onClick={handleLogout}>Logout</button>
+                </div>
+              ): (
+                <GoogleLogin
+                  clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                  buttonText="Log in with Google"
+                  onSuccess={handleLogin}
+                  onFailure={handleFailure}
+                  cookiePolicy={'single_host_origin'}
+                >
+                 </GoogleLogin>
+                
+              )}
+
+             
+                 
+              </div>
           </form>
-          {/* )} */}
+          
     
     </div>
   )

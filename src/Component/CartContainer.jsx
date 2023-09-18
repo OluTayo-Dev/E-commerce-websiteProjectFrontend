@@ -26,23 +26,29 @@ const CartContainer = () => {
   return (
     
     <section className='cart'>
-         <nav className="absolute w-[100%] h-[8%] top-[0] bg-zinc-100 py-2">
+         <nav className="top-[0] bg-zinc-100 py-2 -mt-16 ">
         <div className="flex items-center justify-between">
           <div className="pt-2">
-            <p className="font-bold text-2xl text-brightRed">FARM<bold className="text-darkGrayishBlue">CONNECT</bold></p>
+            <p className="font-bold text-2xl text-red-500">FARM<bold className="text-blue-950">CONNECT</bold></p>
           </div>
           <div className=" flex flex-1 justify-center">
           
           </div>
-          <div className="hidden md:flex space-x-6">
+          <div className="hidden md:flex gap-4 font-medium">
             <a href="/" className="hover:text-slate-500">Home</a>
             <a href="/product" className="hover:text-slate-500">Products</a> 
             <a href="/aboutUs" className="hover:text-slate-500">About Us</a>
-            <a href="/admin" className="hover:text-slate-500">Admin</a>
+            <a href="/adminpage" className="hover:text-slate-500">Admin</a>
           </div>
         </div>
         </nav>
     <header>
+    <div className="md:lg:hidden justify-center mb-6 flex gap-4 font-medium">
+            <a href="/" className="hover:text-slate-500">Home</a>
+            <a href="/product" className="hover:text-slate-500">Products</a> 
+            <a href="/aboutUs" className="hover:text-slate-500">About Us</a>
+            <a href="/adminpage" className="hover:text-slate-500">Admin</a>
+          </div>
         <h2>Your Items</h2>
     </header>
     <div>

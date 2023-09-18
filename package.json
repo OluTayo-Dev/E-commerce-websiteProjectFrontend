@@ -1,5 +1,6 @@
 {
   "name": "my-app",
+  "proxy": "http://127.0.0.1:5000/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,6 +12,7 @@
     "axios": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-google-login": "^5.2.2",
     "react-icons": "^4.10.1",
     "react-modal": "^3.16.1",
     "react-redux": "^8.1.2",
@@ -20,7 +22,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build:dev": "dotenv -e .env.development react-scripts build",
+    "build":"react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
