@@ -13,10 +13,23 @@ import {MdOutlineArrowRightAlt} from "react-icons/md";
 import { AiOutlineMenu } from "react-icons/ai";
 import './Homepage.css';
 import { useState } from "react";
-
+import React, { useEffect } from "react"
 
 
 function Homepage(userDetails) {
+
+
+
+ const LoginSuccess = () => {
+  useEffect(() => {
+    setTimeout(() => {
+      window.close();
+    }, 1000);
+  }, []);
+ }
+
+
+
 let [open, setOpen] = useState(false);
 
 const user = userDetails;
@@ -28,9 +41,7 @@ const logout = () => {
 }
  
   return (
-
-
-  <div>
+ <div>
     <div className="background h-screen">
     <nav  onClick={() => setOpen(!open)} className="text-3xl top-0 cursor-pointer sticky z-50 bg-slate-50">
 

@@ -2,44 +2,88 @@ import { useState } from 'react'
 import { FcGoogle} from "react-icons/fc";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-import GoogleLogin from "react-google-login";
+//import GoogleButton from "react-google-button";
+//import LoginSuccess from "./src/app/container/LoginSuccess";
 
 export default function Signup() {
-  const [loginData, setLoginData] = useState(
-    localStorage.getItem('loginData')
-    ? JSON.parse(localStorage.getItem('loginData'))
-    : null
-  );
+  // const [loginData, setLoginData] = useState(
+  //   localStorage.getItem('loginData')
+  //   ? JSON.parse(localStorage.getItem('loginData'))
+  //   : null
+  // );
+const navigate = useNavigate();
 
+  // const handleFailure = (result) => {
+  //    alert(result);
+  // };
+  // const handleLogin = async (googleData) => {
+  //   const res = await fetch('/api/google-login', {
+  //     method: 'POST',
+  //     body: JSON.stringify({
+  //       token: googleData.tokenId,
+  //     }),
+  //     headers: {
+  //       'Content-Type' : 'application/json',
+  //     },
+  //   });
 
-  const handleFailure = (result) => {
-     alert(result);
-  };
-  const handleLogin = async (googleData) => {
-    const res = await fetch('/api/google-login', {
-      method: 'POST',
-      body: JSON.stringify({
-        token: googleData.tokenId,
-      }),
-      headers: {
-        'Content-Type' : 'application/json',
-      },
-    });
-
-    const data = await res.json();
-    setLoginData(data);
-    localStorage.setItem('loginData', JSON.stringify(data));
-  };
+  //   const data = await res.json();
+  //   setLoginData(data);
+  //   localStorage.setItem('loginData', JSON.stringify(data));
+  // };
 
  
   
 
 
-  const handleLogout = () => {
-    localStorage.removeItem('loginData');
-    setLoginData(null);
-  }
-    const navigate = useNavigate();
+  // const handleLogout = () => {
+  //   localStorage.removeItem('loginData');
+  //   setLoginData(null);
+  // }
+  const fetchAuthUser = async () => {
+    const response = await axios
+      .get("http://localhost:5000/api/v1/auth/user", { withCredentials: true })
+      .catch((err) => {
+        console.log("Not properly authenticated");
+        // dispatch(setIsAuthenticated(false));
+        // dispatch(setAuthUser(null));
+        // history.push("/login/error");
+      });
+
+    if (response && response.data) {
+      console.log("User: ", response.data);
+      // dispatch(setIsAuthenticated(true));
+      // dispatch(setAuthUser(response.data));
+      // history.push("/welcome");
+    }
+  };
+
+  const redirectToGoogleSSO = async () => {
+    //let timer: NodeJS.Timeout | null = null;
+    const googleLoginURL = "http://localhost:5000/api/v1/login/google";
+    const newWindow = window.open(
+      googleLoginURL,
+      "_blank",
+      "width=500,height=600"
+    );
+    if(newWindow !=="") {
+      navigate("/") 
+    }
+
+
+    // if (newWindow) {
+    //   timer = setInterval(() => {
+    //     if (newWindow.closed) {
+    //       console.log("Yay we're authenticated");
+    //       fetchAuthUser();
+    //       if (timer) clearInterval(timer);
+    //     }
+    //   }, 500);
+    // }
+  };
+
+
+   
 
       const [input, setInput] = useState({
         name: "",
@@ -107,32 +151,11 @@ export default function Signup() {
 
              <button className="bg-blue-950 text-white text-sm font-normal hover:bg-black text-center ml-20 mt-5 md:ml-24 w-[8rem] h-[3rem] md:w[10rem] md:h-[2rem]">Sign Up</button>
              <p className="text-center font-medium py-3">Or</p>
-             <button className="bg-blue-950 text-white text-sm font-normal hover:bg-black text-center ml-20 mt-5 md:ml-20 w-[10rem] h-[3rem] md:w[12rem] md:h-[2rem]">Sign Up with Google
+             <button className="bg-blue-950 text-white text-sm font-normal hover:bg-black text-center ml-20 mt-5 md:ml-20 w-[10rem] h-[3rem] md:w[12rem] md:h-[2rem]" onClick={redirectToGoogleSSO}>Sign Up with Google
              <FcGoogle className="-mt-4 mx-[2px]" />
              </button>
             
-             <div>
-               {
-              loginData ? (
-                <div>
-                  <h3>You logged in as {loginData.email}</h3>
-                  <button onClick={handleLogout}>Logout</button>
-                </div>
-              ): (
-                <GoogleLogin
-                  clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-                  buttonText="Log in with Google"
-                  onSuccess={handleLogin}
-                  onFailure={handleFailure}
-                  cookiePolicy={'single_host_origin'}
-                >
-                 </GoogleLogin>
-                
-              )}
-
-             
-                 
-              </div>
+    
           </form>
           
     
